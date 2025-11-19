@@ -486,14 +486,4 @@ function initApp() {
   refreshDashboard();
   refreshReports();
 }
-const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-const sidebar = document.querySelector(".sidebar");
 
-mobileMenuBtn.onclick = () => {
-  sidebar.classList.toggle("open");
-};
-document.querySelectorAll(".navbtn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    sidebar.classList.remove("open");
-  });
-});
