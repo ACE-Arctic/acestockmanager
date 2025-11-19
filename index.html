@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rice Stock Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ================= LOGIN BOX ================= -->
+<div id="loginBox" class="centerBox">
+  <h2>Rice Stock Manager</h2>
+
+  <input id="loginUser" placeholder="Username" />
+  <input id="loginPass" type="password" placeholder="Password" />
+
+  <div class="row">
+    <button id="loginBtn">Login</button>
+  </div>
+</div>
+
+
+<!-- ================= APP ================= -->
+<div id="app" class="app" style="display:none;">
+
+  <!-- MOBILE MENU BUTTON -->
+  <button id="mobileMenuBtn" class="mobileMenuBtn">☰ Menu</button>
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="brand">ACE • Stock Manager</div>
+
+    <nav>
+      <button class="navbtn active" data-tab="dashboardTab">Dashboard</button>
+      <button class="navbtn" data-tab="productsTab">Products</button>
+      <button class="navbtn" data-tab="salesTab">Sales</button>
+      <button class="navbtn" data-tab="reportsTab">Reports</button>
+    </nav>
+
+    <div class="sidebarFoot">
+      <div class="small">User: <b id="currentUserLabel"></b></div>
+      <button id="logoutBtn" class="outline">Logout</button>
+    </div>
+  </aside>
+
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main">
+
+    <!-- DASHBOARD TAB -->
+    <section id="dashboardTab" class="tab">
+      <header class="tabHeader">
+        <h1>Dashboard</h1>
+
+        <div class="tabHeaderActions">
+          <label>Select Month:
+            <input type="month" id="dashboardMonth" />
+          </label>
+        </div>
+      </header>
+
+      <div class="cards">
+        <div class="card">
+          <div class="cardTitle">Total Sales</div>
+          <div id="cardTotalSales" class="cardValue">₹0</div>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">Total Profit</div>
+          <div id="cardTotalProfit" class="cardValue">₹0</div>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">Items Sold</div>
+          <div id="cardItemsSold" class="cardValue">0</div>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">Low Stock</div>
+          <div id="cardLowStock" class="cardValue">0</div>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div class="panel">
+          <h3>Top Selling</h3>
+          <ul id="topProductsList" class="listCompact"></ul>
+        </div>
+
+        <div class="panel">
+          <h3>Recent Sales</h3>
+          <ul id="recentSalesList" class="listCompact"></ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PRODUCTS TAB -->
+    <section id="productsTab" class="tab" style="display:none;">
+      <header class="tabHeader">
+        <h1>Products</h1>
+      </header>
+
+      <div class="panel">
+        <h3>Add / Edit Product</h3>
+
+        <div class="formRow">
+          <input id="pName" placeholder="Product Name" />
+          <input id="pBrand" placeholder="Brand" />
+        </div>
+
+        <div class="formRow">
+          <input id="pCost" type="number" placeholder="Cost Price" />
+          <input id="pStock" type="number" placeholder="Stock" />
+        </div>
+
+        <div class="formRow">
+          <button id="saveProductBtn">Save</button>
+          <button id="clearProductFormBtn" class="muted">Clear</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Product List</h3>
+        <div id="productList"></div>
+      </div>
+    </section>
+
+
+    <!-- SALES TAB -->
+    <section id="salesTab" class="tab" style="display:none;">
+      <header class="tabHeader">
+        <h1>Sales</h1>
+      </header>
+
+      <div class="panel">
+        <h3>Record Sale</h3>
+
+        <div class="formRow">
+          <select id="saleProduct"></select>
+          <input id="saleQty" type="number" value="1" placeholder="Qty" />
+        </div>
+
+        <div class="formRow">
+          <input id="salePrice" type="number" placeholder="Selling Price" />
+          <input id="saleDate" type="date" />
+        </div>
+
+        <div class="formRow">
+          <button id="recordSaleBtn">Record Sale</button>
+          <button id="clearSaleFormBtn" class="muted">Clear</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Sales List</h3>
+
+        <div class="controlsRow">
+          <label>From <input type="date" id="filterFrom" /></label>
+          <label>To <input type="date" id="filterTo" /></label>
+
+          <button id="applyFilter">Apply</button>
+          <button id="clearFilter" class="muted">Reset</button>
+        </div>
+
+        <div id="salesList"></div>
+      </div>
+    </section>
+
+
+    <!-- REPORTS TAB -->
+    <section id="reportsTab" class="tab" style="display:none;">
+      <header class="tabHeader">
+        <h1>Reports</h1>
+      </header>
+
+      <div class="panel">
+        <label>Select Month:
+          <input type="month" id="reportMonth" />
+        </label>
+        <div id="monthlySummary" style="margin-top:16px;"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
